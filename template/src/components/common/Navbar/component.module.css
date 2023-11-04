@@ -1,0 +1,39 @@
+.container {
+    position: sticky;
+    position: -webkit-sticky; /* Safari */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--navbar-bg);
+    color: var(--primary);
+    box-shadow: 0 0 4px 2px rgba(0,0,0,0.25);
+}
+
+.container > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links {
+    display: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .links {
+        display: flex;
+    }
+}
+
+.link {
+    font-weight: var(--title-font-weight);
+}
+
+.link:hover {
+    text-decoration: underline;
+}

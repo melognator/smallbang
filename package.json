@@ -1,0 +1,30 @@
+{
+  "name": "smallbang",
+  "version": "1.0.0",
+  "description": "Template generator",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ."
+  },
+  "bin": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melognator/smallbang.git"
+  },
+  "keywords": [
+    "template",
+    "astro",
+    "react"
+  ],
+  "author": "Melognator",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melognator/smallbang/issues"
+  },
+  "homepage": "https://github.com/melognator/smallbang#readme",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "inquirer": "^9.2.11"
+  }
+}

@@ -1,0 +1,75 @@
+@import url('/fonturl/');
+
+:root {
+    --primary: /primary/;
+    --primary-light: /primarylight/;
+    --navbar-bg: /navbarbackground/;
+    --background: /background/;
+    --color: /color/;
+    --centered-width: /centeredwidth/;
+    --title-font-weight: /titlefontweigth/;
+    --font-weigth: /fontweigth/;
+    --border-radius: /borders/;
+    --border-size: /bordersize/;
+}
+
+html {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html, button {
+    font-family: '/fontname/', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background-color: var(--background);
+    color: var(--color);
+}
+
+body {
+    position: relative
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--title-font-weight);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.content {
+    width: 100%;
+    padding: 0 1rem;
+}
+
+@media (min-width: /centeredwidthbreakpoint/) {
+    .content {
+        width: var(--centered-width);
+        margin: auto;
+    }
+}
+
+/* a.anchor {
+    display: block;
+    position: relative;
+    top: -7rem;
+    visibility: hidden;
+} */
