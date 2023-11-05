@@ -382,25 +382,35 @@ const createProject = async () => {
     let navbarTextsContent = fs.readFileSync(navbarTexts, 'utf8');
 
     navbarTextsContent = navbarTextsContent.replace('$title$', setup.title);
-    navbarTextsContent = navbarTextsContent.replace('$hometext$', languageTexts[setup.language].home);
-    navbarTextsContent = navbarTextsContent.replace('$linkstext$', ''); // WIP, this will be used when selecting sections
 
     fs.writeFileSync(navbarTexts, navbarTextsContent);
-    // modify src/components/common/Navbar/index.jsx
-    const navbarIndex = path.join(dir, 'src', 'components', 'common', 'Navbar', 'index.jsx');
-    let navbarIndexContent = fs.readFileSync(navbarIndex, 'utf8');
 
-    navbarIndexContent = navbarIndexContent.replace('$sections$', ''); // WIP, this will be used when selecting sections
+    // modify src/components/common/Navbar/links.js
+    
+    const navbarLinks = path.join(dir, 'src', 'components', 'common', 'Navbar', 'links.js');
+    let navbarLinksContent = fs.readFileSync(navbarLinks, 'utf8');
+    
+    // indentation of 4 spaces
+    let extraLinks = `{
+        text: 'Contact',
+        url: '#contact'
+    },
+    {
+        text: 'About us',
+        url: '#about'
+    },
+`;
 
-    fs.writeFileSync(navbarIndex, navbarIndexContent);
+    navbarLinksContent = navbarLinksContent.replace('$hometext$', languageTexts[setup.language].home);
+    navbarLinksContent= navbarLinksContent.replace('$extralinks$', extraLinks);
 }
 
 const finishMessage = () => {
     console.log(chalk.greenBright('Project created successfully!'));
     console.log(chalk.blueBright('Run the following commands to start developing:'));
-    console.log(chalk.blueBright(`cd ${setup.name}`));
-    console.log(chalk.blueBright('npm install'));
-    console.log(chalk.blueBright('npm run dev'));
+    console.log((`cd ${setup.name}`));
+    console.log(('npm install'));
+    console.log(('npm run dev'));
 }
 
 const main = async () => {

@@ -1,5 +1,6 @@
 import Link from '../Button/Link';
 import styles from './component.module.css'
+import links from './links';
 import texts from './texts';
 
 const Navbar = () => {
@@ -11,8 +12,9 @@ const Navbar = () => {
                 </a>
                 <nav>
                     <div className={styles.links}>
-                        <a className={styles.link} href="#">{texts.links.home}</a>
-                        $sections$
+                        {links.map((link, index) => (
+                            <a className={styles.link} href={link.url}>{link.text}</a>
+                        ))}
                         <Link href="https://google.com">{'Call To Action'}</Link>
                     </div>
                     {/* <div>[] aqui iria el boton de navegacion para mobiles</div> */}

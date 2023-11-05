@@ -3,14 +3,22 @@
 :root {
     --primary: /primary/;
     --primary-light: /primarylight/;
-    --navbar-bg: /navbarbackground/;
     --background: /background/;
     --color: /color/;
-    --centered-width: /centeredwidth/;
+
+    --centered-width: /centeredwidth/; /* Size of the content, the smaller the more margin they will have on the sides */
+    --content-padding: 0 1rem;
+
     --title-font-weight: /titlefontweigth/;
     --font-weigth: /fontweigth/;
+
     --border-radius: /borders/;
     --border-size: /bordersize/;
+
+    --navbar-bg: /navbarbackground/;
+    --navbar-height: 4rem;
+    --navbar-shadow: 0 0 4px 2px rgba(0,0,0,0.25);
+    --navbar-links-gap: 2rem;
 }
 
 html {
@@ -57,7 +65,7 @@ a {
 
 .content {
     width: 100%;
-    padding: 0 1rem;
+    padding: var(--content-padding);
 }
 
 @media (min-width: /centeredwidthbreakpoint/) {

@@ -4,12 +4,12 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 4rem;
+    height: var(--navbar-height);
     display: flex;
     align-items: center;
     background-color: var(--navbar-bg);
     color: var(--primary);
-    box-shadow: 0 0 4px 2px rgba(0,0,0,0.25);
+    box-shadow: var(--navbar-shadow);
 }
 
 .container > div {
@@ -20,7 +20,7 @@
 
 .links {
     display: none;
-    gap: 2rem;
+    gap: var(--navbar-links-gap);
     align-items: center;
 }
 
