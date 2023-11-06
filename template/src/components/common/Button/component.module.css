@@ -4,7 +4,7 @@
     border: 0;
     font-size: 1rem;
     padding: 0.7rem 1.5rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--button-border-radius);
     text-transform: capitalize;
     border: var(--border-size) solid var(--primary);
     letter-spacing: 0.05rem;

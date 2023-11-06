@@ -1,0 +1,35 @@
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 3rem;
+    justify-content: center;
+}
+
+.items img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.items h3 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.items p {
+    text-align: center;
+}
+
+@media (min-width: 512px) {
+    .items article {
+        width: 350px;
+    }
+}
+
+@media (min-width: 756px) {
+    .items article {
+        width: 250px;
+    }
+}

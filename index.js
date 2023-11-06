@@ -18,6 +18,7 @@ const setup = {
     theme: '',
     scheme: '',
     borders: '',
+    buttonType: '',
     fontFamily: '',
     fontWeigth: '',
     scrollAnimations: '',
@@ -175,6 +176,16 @@ const borderSizes = {
     'elegant': '1px',
 }
 
+const buttonsOptions = {
+    ['Normal']: 'normal',
+    ['Pill']: 'pill',
+}
+
+const buttons = {
+    'normal': 'var(--border-radius)',
+    'pill': '51rem',
+}
+
 const fontFamilyOptions = {
     ['Montserrat']: 'montserrat',
     ['Open Sans']: 'open-sans',
@@ -308,6 +319,12 @@ const setupQuestions = async () => {
         },
         {
             type: 'list',
+            name: 'buttonType',
+            message: 'Button type:',
+            choices: Object.keys(buttonsOptions),
+        },
+        {
+            type: 'list',
             name: 'fontFamily',
             message: 'Font family:',
             choices: Object.keys(fontFamilyOptions),
@@ -338,6 +355,7 @@ const setupQuestions = async () => {
         setup.scheme = colorSchemeOptions[answers.scheme];
     }
     setup.borders = bordersOptions[answers.borders];
+    setup.buttonType = buttonsOptions[answers.buttonType];
     setup.fontFamily = fontFamilyOptions[answers.fontFamily];
     setup.fontWeigth = fontWeigthOptions[answers.fontWeigth];
     setup.scrollAnimations = scrollAnimationsOptions[answers.scrollAnimations];
@@ -427,6 +445,7 @@ const createProject = async () => {
     globalStylesContent = globalStylesContent.replace('/bordersize/', borderSizes[setup.fontWeigth]);
     globalStylesContent = globalStylesContent.replace('/centeredwidth/', screenTypes[setup.screen].centeredWidth);
     globalStylesContent = globalStylesContent.replace('/centeredwidthbreakpoint/', screenTypes[setup.screen].centeredWidthBreakpoint);
+    globalStylesContent = globalStylesContent.replace('/buttonborders/', buttons[setup.buttonType]);
 
     fs.writeFileSync(globalStyles, globalStylesContent);
 

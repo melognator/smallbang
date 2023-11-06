@@ -10,11 +10,6 @@
     align-items: center;
 }
 
-.title {
-    font-size: 3rem;
-    text-transform: capitalize;
-}
-
 .content {  
     display: flex;
     flex-direction: column;
@@ -26,6 +21,7 @@
 
 .content > h2 {
     font-size: 3rem;
+    text-transform: capitalize;
 }
 
 .content > p {
