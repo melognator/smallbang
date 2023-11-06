@@ -1,26 +1,24 @@
-@import url('/fonturl/');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary: /primary/;
-    --primary-light: /primarylight/;
-    --background: /background/;
-    --color: /color/;
+    --primary: #1E1E20;
+    --primary-light: #1E1E20;
+    --background: #FFFFFF;
+    --color: #1E1E20;
 
-    --centered-width: /centeredwidth/; /* Size of the content, the smaller the more margin they will have on the sides */
+    --centered-width: 100%; /* Size of the content, the smaller the more margin they will have on the sides */
     --content-padding: 0 1rem;
 
-    --title-font-weight: /titlefontweigth/;
-    --font-weigth: /fontweigth/;
+    --title-font-weight: 700;
+    --font-weigth: 500;
 
-    --border-radius: /borders/;
-    --border-size: /bordersize/;
+    --border-radius: 2px;
+    --border-size: 2px;
 
-    --navbar-bg: /navbarbackground/;
+    --navbar-bg: #FFFFFF;
     --navbar-height: 4rem;
     --navbar-shadow: 0 0 4px 2px rgba(0,0,0,0.25);
     --navbar-links-gap: 2rem;
-
-    --transition-duration: 200ms;
 }
 
 html {
@@ -33,7 +31,7 @@ html {
 }
 
 html, button {
-    font-family: '/fontname/', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 * {
@@ -70,7 +68,7 @@ a {
     padding: var(--content-padding);
 }
 
-@media (min-width: /centeredwidthbreakpoint/) {
+@media (min-width: 100%) {
     .content {
         width: var(--centered-width);
         margin: auto;

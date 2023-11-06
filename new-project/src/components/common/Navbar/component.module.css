@@ -18,10 +18,6 @@
     align-items: center;
 }
 
-.button {
-    padding: 0.6rem 1.2rem;
-}
-
 .links {
     display: none;
     gap: var(--navbar-links-gap);
@@ -36,11 +32,8 @@
 
 .link {
     font-weight: var(--title-font-weight);
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition-duration: 200ms;
 }
 
 .link:hover {
-    text-decoration-color: var(--primary);
+    text-decoration: underline;
 }

@@ -310,8 +310,8 @@ const setupQuestions = async () => {
     setup.language = languageOptions[answers.language];
     setup.screen = screenOptions[answers.screen];
     setup.theme = themeOptions[answers.theme];
-    if (themeOptions[answers.scheme] === 'black-and-white') {
-        setup.scheme = colorSchemeOptions[answers.theme];
+    if (colorSchemeOptions[answers.scheme] === 'black-and-white') {
+        setup.scheme = themeOptions[answers.theme];
     } else {
         setup.scheme = colorSchemeOptions[answers.scheme];
     }
@@ -402,12 +402,20 @@ const createProject = async () => {
 `;
 
     navbarLinksContent = navbarLinksContent.replace('$hometext$', languageTexts[setup.language].home);
-    navbarLinksContent= navbarLinksContent.replace('$extralinks$', extraLinks);
+    navbarLinksContent = navbarLinksContent.replace('$extralinks$', extraLinks);
+
+    fs.writeFileSync(navbarLinks, navbarLinksContent);
+
+    // modify src/pages/index.astro
+    const indexAstro = path.join(dir, 'src', 'pages', 'index.astro');
+    let indexAstroContent = fs.readFileSync(indexAstro, 'utf8');
+
+    indexAstroContent = indexAstroContent.replace('$language$', setup.language);
 }
 
 const finishMessage = () => {
     console.log(chalk.greenBright('Project created successfully!'));
-    console.log(chalk.blueBright('Run the following commands to start developing:'));
+    console.log(chalk.yellow('Run the following commands to start developing:'));
     console.log((`cd ${setup.name}`));
     console.log(('npm install'));
     console.log(('npm run dev'));

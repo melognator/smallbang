@@ -15,7 +15,7 @@ const Navbar = () => {
                         {links.map((link, index) => (
                             <a className={styles.link} href={link.url}>{link.text}</a>
                         ))}
-                        <Link className={styles.button} href="https://google.com">{'Call To Action'}</Link>
+                        <Link href="https://google.com">{'Call To Action'}</Link>
                     </div>
                     {/* <div>[] aqui iria el boton de navegacion para mobiles</div> */}
                 </nav>
