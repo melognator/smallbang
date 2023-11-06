@@ -23,6 +23,28 @@ const setup = {
     scrollAnimations: '',
 }
 
+const sections = {
+    hero: false,
+    items: false,
+    information: false,
+    gallery: false,
+    pricing: false,
+    testimonials: false,
+    contact: false,
+    footer: false,
+}
+
+const sectionsOptions = {
+    ['Hero']: 'hero',
+    ['Items']: 'items',
+    ['Information']: 'information',
+    ['Gallery']: 'gallery',
+    ['Pricing']: 'pricing',
+    ['Testimonials']: 'testimonials',
+    ['Contact Form']: 'contact',
+    ['Footer']: 'footer',
+}
+
 const languageOptions = {
     ['English']: 'en',
     ['Spanish']: 'es',
@@ -319,6 +341,54 @@ const setupQuestions = async () => {
     setup.fontFamily = fontFamilyOptions[answers.fontFamily];
     setup.fontWeigth = fontWeigthOptions[answers.fontWeigth];
     setup.scrollAnimations = scrollAnimationsOptions[answers.scrollAnimations];
+
+    const sectionsAnswer = await inquirer.prompt([
+        {
+            type: 'checkbox',
+            name: 'sections',
+            pageSize: 10,
+            message: 'Sections:',
+            choices: [
+                {
+                    name: 'Hero',
+                    checked: true,
+                },
+                {
+                    name: 'Items',
+                    checked: false,
+                },
+                {
+                    name: 'Information',
+                    checked: false,
+                },
+                {
+                    name: 'Gallery',
+                    checked: false,
+                },
+                {
+                    name: 'Pricing',
+                    checked: false,
+                },
+                {
+                    name: 'Testimonials',
+                    checked: false,
+                },
+                {
+                    name: 'Contact Form',
+                    checked: false,
+                },
+                {
+                    name: 'Footer',
+                    checked: false,
+                },
+            ],
+        }
+    ]);
+
+    sectionsAnswer.sections.forEach(section => {
+        sections[sectionsOptions[section]] = true;
+    });
+
     return true;
 }
 
@@ -410,7 +480,41 @@ const createProject = async () => {
     const indexAstro = path.join(dir, 'src', 'pages', 'index.astro');
     let indexAstroContent = fs.readFileSync(indexAstro, 'utf8');
 
+    let sectionsImport = '';
+
+    Object.keys(sections).forEach(section => {
+        const sectionName = section.charAt(0).toUpperCase() + section.slice(1);
+        if (sections[section]) {
+            sectionsImport += `import ${sectionName} from '../components/sections/${sectionName}';\n`;
+        }
+    })
+
+    let sectionsChildren = '';
+
+    Object.keys(sections).forEach(section => {
+        const sectionName = section.charAt(0).toUpperCase() + section.slice(1);
+        if (sections[section]) {
+            sectionsChildren += `<${sectionName} />\n            `;
+        }
+    })
+
     indexAstroContent = indexAstroContent.replace('$language$', setup.language);
+    indexAstroContent = indexAstroContent.replace('$sectionsimport$', sectionsImport);
+    indexAstroContent = indexAstroContent.replace('$sections$', sectionsChildren);
+
+    fs.writeFileSync(indexAstro, indexAstroContent);
+
+    // copy template section folder based on enabled sections
+    const templatesDir = path.join(dir, 'src', 'components', 'templates');
+    
+    // copy hero to src/components/sections
+    Object.keys(sections).forEach(section => {
+        const sectionName = section.charAt(0).toUpperCase() + section.slice(1);
+        if (sections[section]) {
+            const sectionDir = path.join(templatesDir, sectionName);
+            fs.cpSync(sectionDir, path.join(dir, 'src', 'components', 'sections', sectionName), { recursive: true });
+        }
+    })
 }
 
 const finishMessage = () => {

@@ -6,6 +6,9 @@
     --background: /background/;
     --color: /color/;
 
+    --white: #FFFFFF;
+    --black: #141415;
+
     --centered-width: /centeredwidth/; /* Size of the content, the smaller the more margin they will have on the sides */
     --content-padding: 0 1rem;
 
@@ -75,6 +78,14 @@ a {
         width: var(--centered-width);
         margin: auto;
     }
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
 }
 
 /* a.anchor {
