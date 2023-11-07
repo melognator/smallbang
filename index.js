@@ -134,28 +134,28 @@ const colorSchemes = {
         primaryLight: '#FFFFFF',
     },
     'red': {
-        primary: '#E83232',
-        primaryLight: '#E83232',
+        primary: '#DE2121',
+        primaryLight: '#F14B4B',
     },
     'green': {
-        primary: '#1CD73A',
-        primaryLight: '#1CD73A',
+        primary: '#0CCE2B',
+        primaryLight: '#30EA4D',
     },
     'blue': {
-        primary: '#1598E2',
-        primaryLight: '#1598E2',
+        primary: '#0B93F4',
+        primaryLight: '#4BB0F8',
     },
     'orange': {
-        primary: '#EC732F',
-        primaryLight: '#EC732F',
+        primary: '#E35E11',
+        primaryLight: '#EA7534',
     },
     'purple': {
-        primary: '#9444E4',
-        primaryLight: '#9444E4',
+        primary: '#8A2EE5',
+        primaryLight: '#B371F4',
     },
     'turquoise': {
-        primary: '#3CDFCC',
-        primaryLight: '#3CDFCC',
+        primary: '#0BA08F',
+        primaryLight: '#21DEC8',
     },
 
 }
@@ -172,7 +172,7 @@ const borders = {
 
 const imageBorders = {
     'squared': '0.125rem',
-    'rounded': '2rem',
+    'rounded': '1.5rem',
 }
 
 const borderSizes = {
@@ -441,8 +441,13 @@ const createProject = async () => {
     globalStylesContent = globalStylesContent.replace('/fontname/', fontFamilies[setup.fontFamily].name);
     globalStylesContent = globalStylesContent.replace('/titlefontweigth/', fontWeigths[setup.fontWeigth].title);
     globalStylesContent = globalStylesContent.replace('/fontweigth/', fontWeigths[setup.fontWeigth].text);
-    globalStylesContent = globalStylesContent.replace('/primary/', colorSchemes[setup.scheme].primary);
-    globalStylesContent = globalStylesContent.replace('/primarylight/', colorSchemes[setup.scheme].primaryLight);
+    if (setup.theme === 'light') {
+        globalStylesContent = globalStylesContent.replace('/primary/', colorSchemes[setup.scheme].primary);
+        globalStylesContent = globalStylesContent.replace('/primarylight/', colorSchemes[setup.scheme].primaryLight);
+    } else {
+        globalStylesContent = globalStylesContent.replace('/primary/', colorSchemes[setup.scheme].primaryLight);
+        globalStylesContent = globalStylesContent.replace('/primarylight/', colorSchemes[setup.scheme].primary);
+    }
     globalStylesContent = globalStylesContent.replace('/background/', themes[setup.theme].background);
     globalStylesContent = globalStylesContent.replace('/navbarbackground/', themes[setup.theme].background);
     globalStylesContent = globalStylesContent.replace('/color/', themes[setup.theme].color);

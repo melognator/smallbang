@@ -1,0 +1,90 @@
+.pricings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.pricings > article {
+    width: 100%;
+
+    position: relative;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pricings h3 {
+    text-transform: uppercase;
+}
+
+.pricingHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: var(--title-font-weight);
+}
+
+.pricings ul {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 0.5rem;
+}
+
+.pricings li {
+    font-size: 1.2rem;
+}
+
+.pricings button {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.tag {
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-weight: var(--title-font-weight);
+    rotate: 5deg;
+    /* move it a little bit to the right and up */
+    transform: translate(0.5rem, -0.5rem);
+    
+}
+
+@media (min-width: 512px) {
+    .pricings > article {
+        width: 400px;
+    }
+}
+
+@media (min-width: 800px) {
+    .pricings > article {
+        width: 350px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .pricings {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pricings > article {
+        width: 100%;
+    }
+}
