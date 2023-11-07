@@ -7,7 +7,7 @@ Thought "big bang" was a bit too much for a simple Astro website generator, so I
 
 ## Usage
 
-```npx smallbang```
+```npx smallbang@latest```
 
 ## Setup options
 
