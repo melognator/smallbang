@@ -166,8 +166,13 @@ const bordersOptions = {
 }
 
 const borders = {
-    'squared': '2px',
-    'rounded': '8px',
+    'squared': '0.125rem',
+    'rounded': '0.5rem',
+}
+
+const imageBorders = {
+    'squared': '0.125rem',
+    'rounded': '2rem',
 }
 
 const borderSizes = {
@@ -442,6 +447,7 @@ const createProject = async () => {
     globalStylesContent = globalStylesContent.replace('/navbarbackground/', themes[setup.theme].background);
     globalStylesContent = globalStylesContent.replace('/color/', themes[setup.theme].color);
     globalStylesContent = globalStylesContent.replace('/borders/', borders[setup.borders]);
+    globalStylesContent = globalStylesContent.replace('/imageborders/', imageBorders[setup.borders]);
     globalStylesContent = globalStylesContent.replace('/bordersize/', borderSizes[setup.fontWeigth]);
     globalStylesContent = globalStylesContent.replace('/centeredwidth/', screenTypes[setup.screen].centeredWidth);
     globalStylesContent = globalStylesContent.replace('/centeredwidthbreakpoint/', screenTypes[setup.screen].centeredWidthBreakpoint);
