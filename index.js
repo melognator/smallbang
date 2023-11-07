@@ -540,6 +540,15 @@ const createProject = async () => {
             fs.cpSync(sectionDir, path.join(dir, 'src', 'components', 'sections', sectionName), { recursive: true });
         }
     })
+
+    // modify src/components/common/Navbar/index.jsx  $primary$
+    const navbar = path.join(dir, 'src', 'components', 'common', 'Navbar', 'index.jsx');
+    let navbarContent = fs.readFileSync(navbar, 'utf8');
+
+    navbarContent = navbarContent.replace('$primary$', colorSchemes[setup.scheme].primary);
+
+    fs.writeFileSync(navbar, navbarContent);
+    
 }
 
 const finishMessage = () => {

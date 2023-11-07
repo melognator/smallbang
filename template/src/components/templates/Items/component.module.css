@@ -10,7 +10,7 @@
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
-    border-radius: var(--button-border-radius);
+    border-radius: var(--image-border-radius);
 }
 
 .items h3 {
