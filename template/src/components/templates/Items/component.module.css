@@ -6,6 +6,13 @@
     justify-content: center;
 }
 
+.items article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
 .items img {
     width: 100%;
     aspect-ratio: 1/1;
