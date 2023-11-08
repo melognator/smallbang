@@ -16,7 +16,6 @@
 .container > div {
     display: flex;
     justify-content: space-between;
-    overflow: hidden;
     align-items: center;
     gap: 2rem;
 }
@@ -43,9 +42,21 @@
     align-items: center;
 }
 
-@media (min-width: 768px) {
+.menu {
+    display: block;
+}
+
+@media (min-width: 1000px) {
     .links {
         display: flex;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .container > div {
+        overflow: hidden;
     }
 }
 

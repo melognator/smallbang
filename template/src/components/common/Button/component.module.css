@@ -12,6 +12,7 @@
     cursor: pointer;
     transition-duration: var(--transition-duration);
     display: inline-block;
+    text-align: center;
 }
 
 .button:hover {

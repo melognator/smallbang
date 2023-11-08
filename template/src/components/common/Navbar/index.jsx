@@ -1,4 +1,5 @@
 import Link from '../Button/Link';
+import Menu from '../Menu';
 import styles from './component.module.css'
 import links from './links';
 import texts from './texts';
@@ -18,7 +19,9 @@ const Navbar = () => {
                         ))}
                         <Link className={styles.button} href="https://google.com">{'Call To Action'}</Link>
                     </div>
-                    {/* <div>[] aqui iria el boton de navegacion para mobiles</div> */}
+                    <Menu className={styles.menu} links={links} footer={
+                        <Link href="https://google.com">{'Call To Action'}</Link>
+                    } />
                 </nav>
             </div>
         </section>

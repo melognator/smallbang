@@ -1,0 +1,116 @@
+.button {
+    background-color: var(--background);
+    color: var(--color);
+    border: 0;
+    outline: 0;
+    border-radius: 2px;
+    box-shadow: 0 0 4px rgba(51, 51, 51, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1.25rem;
+    transition-duration: var(--transition-duration);
+}
+
+.button > svg {
+    height: 1em;
+}
+
+.button > svg > path {
+    height: 1em;
+    fill: var(--primary);
+}
+
+.button:hover {
+    background-color: color-mix(in srgb, var(--color) 5%, transparent);
+}
+
+.button:active {
+    background-color: color-mix(in srgb, var(--color) 10%, transparent);
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.showPopup {
+    pointer-events: all;
+}
+
+
+.backdrop {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0;
+    transition: 250ms;
+}
+
+.showBackdrop {
+    opacity: 0.5;
+}
+
+.menu {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    max-width: 350px;
+    background-color: var(--background);
+    transform: translateX(100%);
+    transition: 200ms;
+    opacity: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.showMenu {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.menuHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+.menuBody {
+    margin: 2rem 0;
+    display: flex;
+    /* gap: 0.5rem; */
+    flex-direction: column;
+}
+
+.menuBody .link {
+    text-align: center;
+    font-size: 1.25rem;
+    padding: 0.75rem;
+    text-transform: uppercase;
+    transition-duration: var(--transition-duration);
+    border-radius: var(--border-radius);
+}
+
+.menuBody .link:hover {
+    background-color: color-mix(in srgb, var(--color) 5%, transparent);
+}
+
+.menuBody .link:active {
+    background-color: color-mix(in srgb, var(--color) 10%, transparent);
+}
+
+.menuFooter {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+}

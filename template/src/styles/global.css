@@ -124,9 +124,9 @@ a {
     padding-bottom: 3rem;
 }
 
-/* a.anchor {
+a.anchor {
     display: block;
     position: relative;
     top: -7rem;
     visibility: hidden;
-} */
+}
