@@ -4,9 +4,9 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: var(--navbar-height);
     display: flex;
     align-items: center;
+    height: var(--navbar-height);
     background-color: var(--navbar-bg);
     color: var(--primary);
     box-shadow: var(--navbar-shadow);
@@ -16,7 +16,9 @@
 .container > div {
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
     align-items: center;
+    gap: 2rem;
 }
 
 .brand {
@@ -32,6 +34,7 @@
 .button {
     padding: 0.5rem 1.2rem;
     font-size: 0.9rem;
+    text-wrap: nowrap;
 }
 
 .links {

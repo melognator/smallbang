@@ -29,7 +29,7 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: var(--font-weigth);
     box-sizing: border-box;
 }
@@ -38,7 +38,7 @@ html {
     box-sizing: inherit;
 }
 
-html, button {
+html, button, input, textarea {
     font-family: '/fontname/', sans-serif;
 }
 
@@ -97,12 +97,17 @@ a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2rem;
 }
 
 .main > section {
     width: 100%;
+    margin-bottom: 3rem;
 }
+
+.main > section:last-child {
+    margin-bottom: 0;
+}
+
 
 .center {
     text-align: center;
@@ -115,8 +120,8 @@ a {
 .colored-section {
     color: var(--white);
     background-color: var(--primary);
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 /* a.anchor {

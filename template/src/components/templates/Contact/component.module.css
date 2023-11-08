@@ -1,0 +1,27 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 25rem;
+    margin: auto;
+    gap: 1rem;
+}
+
+.form > article {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 0.5rem;
+}
+
+.form label {
+    text-transform: uppercase;
+}
+
+.form textarea {
+    min-height: 150px;
+}
+
+.form button {
+    text-transform: uppercase;
+}

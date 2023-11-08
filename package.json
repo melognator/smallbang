@@ -1,6 +1,6 @@
 {
   "name": "smallbang",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Astro template generator",
   "main": "index.js",
   "type": "module",

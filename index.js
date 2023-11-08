@@ -491,15 +491,17 @@ const createProject = async () => {
     let navbarLinksContent = fs.readFileSync(navbarLinks, 'utf8');
     
     // indentation of 4 spaces
-    let extraLinks = `{
-        text: 'Contact',
-        url: '#contact'
-    },
-    {
-        text: 'About us',
-        url: '#about'
-    },
-`;
+    let extraLinks = '';
+
+    Object.keys(sections).forEach(section => {
+        const sectionName = section.charAt(0).toUpperCase() + section.slice(1);
+        if (sections[section] && section !== 'hero' && section !== 'footer') {
+            extraLinks += `{
+        text: '${sectionName}',
+        url: '#${section}'
+    },\n    `;
+        }
+    })
 
     navbarLinksContent = navbarLinksContent.replace('$hometext$', languageTexts[setup.language].home);
     navbarLinksContent = navbarLinksContent.replace('$extralinks$', extraLinks);
