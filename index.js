@@ -534,6 +534,24 @@ const createProject = async () => {
 
     fs.writeFileSync(indexAstro, indexAstroContent);
 
+    // modify src/components/templates/Hero/component.module.css
+    const heroStyles = path.join(dir, 'src', 'components', 'templates', 'Hero', 'component.module.css');
+    let heroStylesContent = fs.readFileSync(heroStyles, 'utf8');
+    if (setup.screen === 'compact') {
+        
+            heroStylesContent = heroStylesContent.replace('$aligment$', 
+`@media (min-width: 1250px) {
+    .content {
+        align-items: start;
+        text-align: left;
+    }
+}`);
+    } else {
+        heroStylesContent = heroStylesContent.replace('$aligment$', '');
+    }
+
+    fs.writeFileSync(heroStyles, heroStylesContent);
+
     // copy template section folder based on enabled sections
     const templatesDir = path.join(dir, 'src', 'components', 'templates');
     
@@ -553,6 +571,8 @@ const createProject = async () => {
     navbarContent = navbarContent.replace('$primary$', colorSchemes[setup.scheme].primary);
 
     fs.writeFileSync(navbar, navbarContent);
+
+    
     
 }
 

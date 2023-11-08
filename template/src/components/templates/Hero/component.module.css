@@ -31,9 +31,4 @@
     max-width: 30rem;
 }
 
-@media (min-width: 1250px) {
-    .content {
-        align-items: start;
-        text-align: left;
-    }
-}
+$aligment$

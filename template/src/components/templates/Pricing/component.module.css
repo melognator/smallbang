@@ -2,7 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
+    margin: auto;
     justify-content: center;
+    max-width: 1200px;
 }
 
 .pricings > article {
