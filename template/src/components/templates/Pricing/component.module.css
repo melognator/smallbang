@@ -10,6 +10,7 @@
 .pricings > article {
     width: 100%;
 
+    background-color: $background$;
     position: relative;
     border-radius: var(--border-radius);
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);

@@ -1,0 +1,58 @@
+.testimonials {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.testimonials > article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    background-color: $background$;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+    color: var(--color-primary);
+    text-align: left;
+}
+
+.testimonialHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.stars svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.stars svg > path {
+    fill: #f1c40f;
+}
+
+.testimonials img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+
+@media (min-width: 512px) {
+    .testimonials article {
+        width: 450px;
+    }
+}

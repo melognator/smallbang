@@ -552,6 +552,22 @@ const createProject = async () => {
 
     fs.writeFileSync(heroStyles, heroStylesContent);
 
+    // modify src/components/templates/Pricing/component.module.css
+    const pricingStyles = path.join(dir, 'src', 'components', 'templates', 'Pricing', 'component.module.css');
+    let pricingStylesContent = fs.readFileSync(pricingStyles, 'utf8');
+
+    pricingStylesContent = pricingStylesContent.replace('$background$', setup.theme === 'dark' ? '#232325' : 'transparent');
+
+    fs.writeFileSync(pricingStyles, pricingStylesContent);
+
+    // modify src/components/templates/Testimonials/component.module.css
+    const testimonialsStyles = path.join(dir, 'src', 'components', 'templates', 'Testimonials', 'component.module.css');
+    let testimonialsStylesContent = fs.readFileSync(testimonialsStyles, 'utf8');
+
+    testimonialsStylesContent = testimonialsStylesContent.replace('$background$', setup.theme === 'dark' ? '#232325' : 'transparent');
+
+    fs.writeFileSync(testimonialsStyles, testimonialsStylesContent);
+
     // copy template section folder based on enabled sections
     const templatesDir = path.join(dir, 'src', 'components', 'templates');
     
