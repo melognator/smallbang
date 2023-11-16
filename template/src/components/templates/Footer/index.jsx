@@ -19,7 +19,9 @@ const Footer = () => {
                     <section className={styles.right}>
                         <div className={styles.socials}>
                             {socials.map((social, index) => ($aosspan1$
-                                <a key={index} target='_blank' href={social.link}><FontAwesomeIcon icon={social.icon} /></a>$aosspan2$
+                                <a key={index} target='_blank' href={social.link} aria-label={social.title}>
+                                    <FontAwesomeIcon icon={social.icon} />
+                                </a>$aosspan2$
                             ))}
                         </div>
                         <p>{texts.copy}</p>

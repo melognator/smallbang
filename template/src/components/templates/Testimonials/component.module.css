@@ -49,6 +49,8 @@
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 @media (min-width: 512px) {

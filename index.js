@@ -427,13 +427,13 @@ const setupQuestions = async () => {
             type: 'input',
             name: 'title',
             message: 'Website title:',
-            default: 'Brand New Website!',
+            default: 'Smallbang',
         },
         {
             type: 'input',
             name: 'description',
             message: 'Website description:',
-            default: '',
+            default: 'Work in progress...',
         },
         {
             type: 'list',

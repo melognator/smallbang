@@ -8,22 +8,27 @@ const socials = [
     {
         icon: faXTwitter,
         link: 'https://twitter.com',
+        title: 'Twitter',
     },
     {
         icon: faFacebookF,
         link: 'https://facebook.com',
+        title: 'Facebook',
     },
     {
         icon: faInstagram,
         link: 'https://instagram.com',
+        title: 'Instagram',
     },
     {
         icon: faLinkedinIn,
         link: 'https://linkedin.com',
+        title: 'LinkedIn',
     },
     {
         icon: faEnvelope,
-        link: 'mailto:you@example.com'
+        link: 'mailto:you@example.com',
+        title: 'Our Email',
     },  
 ];
 
