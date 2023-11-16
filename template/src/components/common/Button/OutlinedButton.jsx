@@ -2,7 +2,7 @@ import styles from './component.module.css'
 
 const OutlinedButton = (props) => {
   return (
-    <button {...props} className={`${props.className} ${styles.button} ${styles.outlined}`}>
+    <button {...props} className={`${props.className ? props.className + ' ' : ''}${styles.button} ${styles.outlined}`}>
         {props.children}
     </button>
   )

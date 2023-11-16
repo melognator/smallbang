@@ -79,18 +79,4 @@
     align-items: center;
 }
 
-@media (min-width: 768px) {
-    .content {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .left {
-        align-items: start;
-        text-align: left;
-    }
-
-    .right {
-        align-items: center;
-    }
-}
+$aligment$

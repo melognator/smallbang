@@ -701,6 +701,33 @@ const createProject = async () => {
 
     fs.writeFileSync(heroStyles, heroStylesContent);
 
+    // modify src/components/templates/Footer/component.module.css
+    const footerStyles = path.join(dir, 'src', 'components', 'templates', 'Footer', 'component.module.css');
+    let footerStylesContent = fs.readFileSync(footerStyles, 'utf8');
+
+    if (setup.screen === 'compact') {
+        footerStylesContent = footerStylesContent.replace('$aligment$',
+`@media (min-width: 768px) {
+    .content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .left {
+        align-items: start;
+        text-align: left;
+    }
+
+    .right {
+        align-items: center;
+    }
+}`);
+    } else {
+        footerStylesContent = footerStylesContent.replace('$aligment$', '');
+    }
+
+    fs.writeFileSync(footerStyles, footerStylesContent);
+
     // modify src/components/templates/Pricing/component.module.css
     const pricingStyles = path.join(dir, 'src', 'components', 'templates', 'Pricing', 'component.module.css');
     let pricingStylesContent = fs.readFileSync(pricingStyles, 'utf8');
