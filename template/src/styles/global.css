@@ -32,6 +32,7 @@ html {
     font-size: 18px;
     font-weight: var(--font-weigth);
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 *, *:before, *:after {
@@ -130,3 +131,5 @@ a.anchor {
     top: -7rem;
     visibility: hidden;
 }
+
+/aos/

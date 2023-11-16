@@ -12,7 +12,7 @@ const Pricing = () => {
                     <h2 className='title-margin'>{texts.title}</h2>
                     <div className={styles.pricings}>
                         {pricings.map((pricing, index) => (
-                            <article key={index}>
+                            <article key={index}$aos$>
                                 {pricing.tag && <span className={styles.tag}>{pricing.tag}</span>}
                                 <section className={styles.pricingHeader}>
                                     <h3>{pricing.title}</h3>

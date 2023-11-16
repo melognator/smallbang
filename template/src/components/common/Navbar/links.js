@@ -1,7 +1,7 @@
 const links = [
     {
         text: '$hometext$',
-        url: '/'
+        url: '#top'
     },
     $extralinks$
 ]

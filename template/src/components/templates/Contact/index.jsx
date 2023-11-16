@@ -12,19 +12,19 @@ const Contact = () => {
                 <div className={`content center`}>
                     <form className={styles.form}>
                         <h2>{texts.title}</h2>
-                        <article>
+                        <article$aos1$>
                             <label htmlFor='email'>{texts.emailLabel}</label>
                             <Input type='email' id='email' name='email' />
                         </article>
-                        <article>
+                        <article$aos1$>
                             <label htmlFor='name'>{texts.nameLabel}</label>
                             <Input type='text' id='name' name='name' />
                         </article>
-                        <article>
+                        <article$aos1$>
                             <label htmlFor='message'>{texts.messageLabel}</label>
                             <Textarea id='message' name='message' />
-                        </article>
-                        <Button type='submit'>{texts.button}</Button>
+                        </article>$aosspan1$
+                        <Button type='submit'>{texts.button}</Button>$aosspan2$
                     </form>
                 </div>
             </section>

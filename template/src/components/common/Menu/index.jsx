@@ -33,9 +33,7 @@ const Menu = ({links = [], footer, className}) => {
                     </section>
                     <section className={styles.menuBody}>
                         {links.map((link, index) => (
-                            <>
-                                <a onClick={closeMenu} className={styles.link} href={link.url}>{link.text}</a>
-                            </>
+                            <a key={index} onClick={closeMenu} className={styles.link} href={link.url}>{link.text}</a>
                         ))}
                     </section>
                     <section className={styles.menuFooter}>

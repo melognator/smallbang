@@ -11,12 +11,12 @@ const Information = () => {
             <section className={colored ? 'colored-section' : ''}>
                 <div className={`content center ${styles.content}`}>
                     <h2>{texts.title}</h2>
-                    <p>{texts.description}</p>
-                    {colored ? (
-                        <ColoredLink href='https://www.google.com'>{texts.button}</ColoredLink>
-                    ) : (
-                        <Link href='https://www.google.com'>{texts.button}</Link>
-                    )}
+                    <p$aos1$>{texts.description}</p>$aosspan1$
+                    $extratab${colored ? (
+                        $extratab$<ColoredLink href='https://www.google.com'>{texts.button}</ColoredLink>
+                    $extratab$) : (
+                        $extratab$<Link href='https://www.google.com'>{texts.button}</Link>
+                    $extratab$)}$aosspan2$
                 </div>
             </section>
         </>

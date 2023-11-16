@@ -13,7 +13,7 @@ const Testimonials = () => {
                     <h2 className='title-margin'>{texts.title}</h2>
                     <div className={styles.testimonials}>
                         {testimonials.map((testimonial, index) => (
-                            <article key={index}>
+                            <article key={index}$aos$>
                                 <section className={styles.testimonialHeader}>
                                     <img src={testimonial.image} alt={testimonial.name} />
                                     <div>

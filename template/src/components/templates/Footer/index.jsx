@@ -2,11 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ColoredLink from '../../common/Button/ColoredLink';
 import styles from './component.module.css'
 import texts from './texts';
-import { faXTwitter } from '@fortawesome/free-brands-svg-icons/faXTwitter';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons/faInstagram';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
-import { faFacebookF } from '@fortawesome/free-brands-svg-icons/faFacebookF';
+import socials from './socials';
 
 const Footer = () => {
     return (
@@ -18,21 +14,19 @@ const Footer = () => {
                     <section className={styles.left}>
                         <h2>{texts.title}</h2>
                         <p>{texts.description}</p>
-                        <ColoredLink>{texts.button}</ColoredLink>
+                        <ColoredLink href='https://www.google.com'>{texts.button}</ColoredLink>
                     </section>
                     <section className={styles.right}>
                         <div className={styles.socials}>
-                            <a target='_blank' href='https://twitter.com'><FontAwesomeIcon icon={faXTwitter} /></a>
-                            <a target='_blank' href='https://facebook.com'><FontAwesomeIcon icon={faFacebookF} /></a>
-                            <a target='_blank' href='https://instagram.com'><FontAwesomeIcon icon={faInstagram} /></a>
-                            <a target='_blank' href='https://linkedin.com'><FontAwesomeIcon icon={faLinkedinIn} /></a>
-                            <a target='_blank' href='mailto:example@example.com'><FontAwesomeIcon icon={faEnvelope} /></a>
+                            {socials.map((social, index) => ($aosspan1$
+                                <a key={index} target='_blank' href={social.link}><FontAwesomeIcon icon={social.icon} /></a>$aosspan2$
+                            ))}
                         </div>
                         <p>{texts.copy}</p>
                     </section>
                 </div>
                 <div className={styles.footer}>
-                    <p>Created with <a href='https://www.npmjs.com/package/smallbang?activeTab=readme'>smallbang</a></p>
+                    <p>Created with <a target='_blank' href='https://www.npmjs.com/package/smallbang?activeTab=readme'>smallbang</a></p>
                     <a href='#top'>Back to top</a>
                 </div>
             </section>

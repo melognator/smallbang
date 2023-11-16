@@ -258,6 +258,149 @@ const scrollAnimationsOptions = {
     ['No']: 'no',
 }
 
+const scrollAnimations = {
+    'yes': {
+        css: '<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />',
+        script: `<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script is:inline>
+            AOS.init({
+                duration: 750,
+            });
+        </script>`,
+        styles: `.aosWrapper {
+    display: flex;
+    flex-direction: column;
+}`,
+        hero: [
+            {
+                replace: '$aos1$',
+                for: ' data-aos="fade-up" data-aos-delay={150*0}',
+            },
+            {
+                replace: '$aos2$',
+                for: ' data-aos="fade-up" data-aos-delay={150*1}',
+            },
+            {
+                replace: '$aos3$',
+                for: ' data-aos="fade-up" data-aos-delay={150*2}',
+            },
+            {
+                replace: '$aosspan1$',
+                for: '\n                <span data-aos="fade-up" data-aos-delay={150*3}>',
+            },
+            {
+                replace: '$aosspan2$',
+                for: '\n                </span>',
+            },
+            {
+                replace: '$extratab$',
+                for: '    ',
+            },
+        ],
+        items: [
+            {
+                replace: '$aos$',
+                for: `
+                            data-aos="fade-up" 
+                            data-aos-delay={150*index}
+                            `,
+            }
+        ],
+        information: [
+            {
+                replace: '$aos1$',
+                for: ' data-aos="zoom-in" data-aos-duration={500}',
+            },
+            {
+                replace: '$aosspan1$',
+                for: '\n                    <span data-aos="zoom-in" data-aos-duration={500} data-aos-delay={150}>',
+            },
+            {
+                replace: '$aosspan2$',
+                for: '\n                    </span>',
+            },
+            {
+                replace: '$extratab$',
+                for: '    ',
+            },
+        ],
+        gallery: [
+            {
+                replace: '$aos1$',
+                for: ' data-aos="fade-right" data-aos-delay={150*0}',
+            },
+            {
+                replace: '$aos2$',
+                for: ' data-aos="fade-left" data-aos-delay={150*1}',
+            },
+            {
+                replace: '$aos3$',
+                for: ' data-aos="fade-up" data-aos-delay={150*0}',
+            },
+            {
+                replace: '$aos4$',
+                for: ' data-aos="fade-up" data-aos-delay={150*1}',
+            },
+            {
+                replace: '$aos5$',
+                for: ' data-aos="fade-up" data-aos-delay={150*2}',
+            },
+        ],
+        pricing: [
+            {
+                replace: '$aos$',
+                for: `
+                            data-aos="fade-up" 
+                            data-aos-delay={150*index}`
+            }
+        ],
+        testimonials: [
+            {
+                replace: '$aos$',
+                for: `
+                            data-aos="fade-up" 
+                            data-aos-delay={150*index}`,
+            }
+        ],
+        contact: [
+            {
+                replace: '$aos1$',
+                for: ' data-aos="fade-up"',
+            },
+            {
+                replace: '$aosspan1$',
+                for: `
+                        <span className="aosWrapper" data-aos="fade-up">`,
+            },
+            {
+                replace: '$aosspan2$',
+                for: `
+                        </span>`,
+            },
+        ],
+        footer: [
+            {
+                replace: '$aosspan1$',
+                for: '\n                                <span key={index} data-aos="fade-down" data-aos-duration={500} data-aos-delay={100*index}>'
+            },
+            {
+                replace: '$aosspan2$',
+                for: '\n                                </span>'
+            },
+            {
+                replace: '$extratab$',
+                for: '    ',
+            },
+        ]
+
+    },
+    'no': {
+        css: '',
+        script: '',
+        styles: '',
+    },
+}
+
 const checkDirExists = (name) => {
     const dir = path.join(process.cwd(), name);
     if (fs.existsSync(dir)) {
@@ -457,6 +600,7 @@ const createProject = async () => {
     globalStylesContent = globalStylesContent.replace('/centeredwidth/', screenTypes[setup.screen].centeredWidth);
     globalStylesContent = globalStylesContent.replace('/centeredwidthbreakpoint/', screenTypes[setup.screen].centeredWidthBreakpoint);
     globalStylesContent = globalStylesContent.replace('/buttonborders/', buttons[setup.buttonType]);
+    globalStylesContent = globalStylesContent.replace('/aos/', scrollAnimations[setup.scrollAnimations].styles);
 
     fs.writeFileSync(globalStyles, globalStylesContent);
 
@@ -466,6 +610,9 @@ const createProject = async () => {
 
     indexPageContent = indexPageContent.replace('$title$', setup.title);
     indexPageContent = indexPageContent.replace('$description$', setup.description);
+
+    indexPageContent = indexPageContent.replace('$aoscss$', scrollAnimations[setup.scrollAnimations].css);
+    indexPageContent = indexPageContent.replace('$aosscript$', scrollAnimations[setup.scrollAnimations].script);
 
     fs.writeFileSync(indexPage, indexPageContent);
 
@@ -570,6 +717,92 @@ const createProject = async () => {
 
     fs.writeFileSync(testimonialsStyles, testimonialsStylesContent);
 
+    // modify all src/templates to adjust to setup
+    const hero = path.join(dir, 'src', 'components', 'templates', 'Hero', 'index.jsx');
+    let heroContent = fs.readFileSync(hero, 'utf8');
+
+    const items = path.join(dir, 'src', 'components', 'templates', 'Items', 'index.jsx');
+    let itemsContent = fs.readFileSync(items, 'utf8');
+
+    const information = path.join(dir, 'src', 'components', 'templates', 'Information', 'index.jsx');
+    let informationContent = fs.readFileSync(information, 'utf8');
+
+    const gallery = path.join(dir, 'src', 'components', 'templates', 'Gallery', 'index.jsx');
+    let galleryContent = fs.readFileSync(gallery, 'utf8');
+
+    const pricing = path.join(dir, 'src', 'components', 'templates', 'Pricing', 'index.jsx');
+    let pricingContent = fs.readFileSync(pricing, 'utf8');
+
+    const testimonials = path.join(dir, 'src', 'components', 'templates', 'Testimonials', 'index.jsx');
+    let testimonialsContent = fs.readFileSync(testimonials, 'utf8');
+
+    const contact = path.join(dir, 'src', 'components', 'templates', 'Contact', 'index.jsx');
+    let contactContent = fs.readFileSync(contact, 'utf8');
+
+    const footer = path.join(dir, 'src', 'components', 'templates', 'Footer', 'index.jsx');
+    let footerContent = fs.readFileSync(footer, 'utf8');
+
+    if (setup.scrollAnimations === 'yes') {
+        scrollAnimations['yes'].hero.forEach(item => {
+            heroContent = heroContent.replaceAll(item.replace, item.for);
+        })
+        scrollAnimations['yes'].items.forEach(item => {
+            itemsContent = itemsContent.replaceAll(item.replace, item.for);
+        })
+        scrollAnimations['yes'].information.forEach(item => {
+            informationContent = informationContent.replaceAll(item.replace, item.for);
+        })
+        scrollAnimations['yes'].gallery.forEach(item => {
+            galleryContent = galleryContent.replaceAll(item.replace, item.for);
+        })
+        scrollAnimations['yes'].pricing.forEach(item => {
+            pricingContent = pricingContent.replaceAll(item.replace, item.for);
+        })
+        scrollAnimations['yes'].testimonials.forEach(item => {
+            testimonialsContent = testimonialsContent.replaceAll(item.replace, item.for);
+        })
+        scrollAnimations['yes'].footer.forEach(item => {
+            footerContent = footerContent.replaceAll(item.replace, item.for);
+        })
+        scrollAnimations['yes'].contact.forEach(item => {
+            contactContent = contactContent.replaceAll(item.replace, item.for);
+        })
+    } else {
+        scrollAnimations['yes'].hero.forEach(item => {
+            heroContent = heroContent.replaceAll(item.replace, '');
+        })
+        scrollAnimations['yes'].items.forEach(item => {
+            itemsContent = itemsContent.replaceAll(item.replace, '');
+        })
+        scrollAnimations['yes'].information.forEach(item => {
+            informationContent = informationContent.replaceAll(item.replace, '');
+        })
+        scrollAnimations['yes'].gallery.forEach(item => {
+            galleryContent = galleryContent.replaceAll(item.replace, '');
+        })
+        scrollAnimations['yes'].pricing.forEach(item => {
+            pricingContent = pricingContent.replaceAll(item.replace, '');
+        })
+        scrollAnimations['yes'].testimonials.forEach(item => {
+            testimonialsContent = testimonialsContent.replaceAll(item.replace, '');
+        })
+        scrollAnimations['yes'].footer.forEach(item => {
+            footerContent = footerContent.replaceAll(item.replace, '');
+        })
+        scrollAnimations['yes'].contact.forEach(item => {
+            contactContent = contactContent.replaceAll(item.replace, '');
+        })
+    }
+    
+    fs.writeFileSync(hero, heroContent);
+    fs.writeFileSync(items, itemsContent);
+    fs.writeFileSync(information, informationContent);
+    fs.writeFileSync(gallery, galleryContent);
+    fs.writeFileSync(pricing, pricingContent);
+    fs.writeFileSync(testimonials, testimonialsContent);
+    fs.writeFileSync(contact, contactContent);
+    fs.writeFileSync(footer, footerContent);
+
     // copy template section folder based on enabled sections
     const templatesDir = path.join(dir, 'src', 'components', 'templates');
     
@@ -590,7 +823,6 @@ const createProject = async () => {
 
     fs.writeFileSync(navbar, navbarContent);
 
-    
     
 }
 
