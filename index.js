@@ -59,26 +59,31 @@ const languageTexts = {
         home: 'Home',
         about: 'About',
         contact: 'Contact',
+        credits: 'Made with [smallbang](https://www.npmjs.com/package/smallbang)',
     },
     'es': {
         home: 'Inicio',
         about: 'Acerca de',
         contact: 'Contacto',
+        credits: 'Hecho con [smallbang](https://www.npmjs.com/package/smallbang)',
     },
     'pt': {
         home: 'Início',
         about: 'Sobre',
         contact: 'Contato',
+        credits: 'Feito com [smallbang](https://www.npmjs.com/package/smallbang)',
     },
     'fr': {
         home: 'Accueil',
         about: 'À propos',
         contact: 'Contact',
+        credits: 'Fait avec [smallbang](https://www.npmjs.com/package/smallbang)',
     },
     'de': {
         home: 'Startseite',
         about: 'Über',
         contact: 'Kontakt',
+        credits: 'Gemacht mit [smallbang](https://www.npmjs.com/package/smallbang)',
     },
 }
 
@@ -850,6 +855,27 @@ const createProject = async () => {
 
     fs.writeFileSync(navbar, navbarContent);
 
+    // modify README.md
+    const readme = path.join(dir, 'README.md');
+    let readmeContent = fs.readFileSync(readme, 'utf8');
+
+    const presetsText = 
+`Website language: ${setup.language}
+Screen size: ${setup.screen}
+Theme: ${setup.theme}
+Color scheme: ${setup.scheme}
+Borders: ${setup.borders}
+Button type: ${setup.buttonType}
+Font family: ${setup.fontFamily}
+Font weigth: ${setup.fontWeigth}
+Scroll animations: ${setup.scrollAnimations}`
+
+    readmeContent = readmeContent.replace('$title$', setup.title);
+    readmeContent = readmeContent.replace('$description$', setup.description);
+    readmeContent = readmeContent.replace('$credits$', languageTexts[setup.language].credits);
+    readmeContent = readmeContent.replace('$presets$', presetsText);
+
+    fs.writeFileSync(readme, readmeContent);
     
 }
 
