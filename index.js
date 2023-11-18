@@ -749,6 +749,14 @@ const createProject = async () => {
 
     fs.writeFileSync(testimonialsStyles, testimonialsStylesContent);
 
+    // modify src/components/templates/Footer/texts.js
+    const footerTexts = path.join(dir, 'src', 'components', 'templates', 'Footer', 'texts.js');
+    let footerTextsContent = fs.readFileSync(footerTexts, 'utf8');
+
+    footerTextsContent = footerTextsContent.replace('$title$', setup.title);
+
+    fs.writeFileSync(footerTexts, footerTextsContent);
+
     // modify all src/templates to adjust to setup
     const hero = path.join(dir, 'src', 'components', 'templates', 'Hero', 'index.jsx');
     let heroContent = fs.readFileSync(hero, 'utf8');
@@ -855,20 +863,36 @@ const createProject = async () => {
 
     fs.writeFileSync(navbar, navbarContent);
 
+    // modify src/components/common/Navbar/component.module.css
+    const navbarStyles = path.join(dir, 'src', 'components', 'common', 'Navbar', 'component.module.css');
+    let navbarStylesContent = fs.readFileSync(navbarStyles, 'utf8');
+
+    // get number of sections
+    let sectionsNumber = 0;
+    Object.keys(sections).forEach(section => {
+        if (sections[section]) {
+            sectionsNumber++;
+        }
+    });
+
+    navbarStylesContent = navbarStylesContent.replace('$breakpoint$', `${500 + sectionsNumber * 100}px`);
+
+    fs.writeFileSync(navbarStyles, navbarStylesContent);
+
     // modify README.md
     const readme = path.join(dir, 'README.md');
     let readmeContent = fs.readFileSync(readme, 'utf8');
 
     const presetsText = 
-`Website language: ${setup.language}
-Screen size: ${setup.screen}
-Theme: ${setup.theme}
-Color scheme: ${setup.scheme}
-Borders: ${setup.borders}
-Button type: ${setup.buttonType}
-Font family: ${setup.fontFamily}
-Font weigth: ${setup.fontWeigth}
-Scroll animations: ${setup.scrollAnimations}`
+`Website language: ${setup.language}  
+Screen size: ${setup.screen}  
+Theme: ${setup.theme}  
+Color scheme: ${setup.scheme}  
+Borders: ${setup.borders}  
+Button type: ${setup.buttonType}  
+Font family: ${setup.fontFamily}  
+Font weigth: ${setup.fontWeigth}  
+Scroll animations: ${setup.scrollAnimations}  `
 
     readmeContent = readmeContent.replace('$title$', setup.title);
     readmeContent = readmeContent.replace('$description$', setup.description);

@@ -46,7 +46,7 @@
     display: block;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: $breakpoint$) {
     .links {
         display: flex;
     }
