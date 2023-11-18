@@ -28,7 +28,7 @@ const Footer = () => {
                     </section>
                 </div>
                 <div className={styles.footer}>
-                    <p>Created with <a target='_blank' href='https://www.npmjs.com/package/smallbang?activeTab=readme'>smallbang</a></p>
+                    <p>{texts.createdWith} <a target='_blank' href='https://www.npmjs.com/package/smallbang'>smallbang</a></p>
                     <a href='#top'>Back to top</a>
                 </div>
             </section>

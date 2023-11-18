@@ -60,30 +60,40 @@ const languageTexts = {
         about: 'About',
         contact: 'Contact',
         credits: 'Made with [smallbang](https://www.npmjs.com/package/smallbang)',
+        createdWith: 'Made with',
+        copyright: 'All rights reserved.',
     },
     'es': {
         home: 'Inicio',
         about: 'Acerca de',
         contact: 'Contacto',
         credits: 'Hecho con [smallbang](https://www.npmjs.com/package/smallbang)',
+        createdWith: 'Hecho con',
+        copyright: 'Todos los derechos reservados.',
     },
     'pt': {
         home: 'Início',
         about: 'Sobre',
         contact: 'Contato',
         credits: 'Feito com [smallbang](https://www.npmjs.com/package/smallbang)',
+        createdWith: 'Feito com',
+        copyright: 'Todos os direitos reservados.',
     },
     'fr': {
         home: 'Accueil',
         about: 'À propos',
         contact: 'Contact',
         credits: 'Fait avec [smallbang](https://www.npmjs.com/package/smallbang)',
+        createdWith: 'Fait avec',
+        copyright: 'Tous droits réservés.',
     },
     'de': {
         home: 'Startseite',
         about: 'Über',
         contact: 'Kontakt',
         credits: 'Gemacht mit [smallbang](https://www.npmjs.com/package/smallbang)',
+        createdWith: 'Gemacht mit',
+        copyright: 'Alle Rechte vorbehalten.',
     },
 }
 
@@ -754,6 +764,8 @@ const createProject = async () => {
     let footerTextsContent = fs.readFileSync(footerTexts, 'utf8');
 
     footerTextsContent = footerTextsContent.replace('$title$', setup.title);
+    footerTextsContent = footerTextsContent.replace('$createdwith$', languageTexts[setup.language].createdWith);
+    footerTextsContent = footerTextsContent.replace('$copyright$', languageTexts[setup.language].copyright);
 
     fs.writeFileSync(footerTexts, footerTextsContent);
 
