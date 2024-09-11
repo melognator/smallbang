@@ -35,6 +35,10 @@ const sections = {
     footer: false,
 }
 
+const pages = {
+    products: false,
+}
+
 const sectionsOptions = {
     ['Hero']: 'hero',
     ['Items']: 'items',
@@ -44,6 +48,10 @@ const sectionsOptions = {
     ['Testimonials']: 'testimonials',
     ['Contact Form']: 'contact',
     ['Footer']: 'footer',
+}
+
+const pagesOptions = {
+    ['Products']: 'products',
 }
 
 const languageOptions = {
@@ -570,6 +578,25 @@ const setupQuestions = async () => {
         sections[sectionsOptions[section]] = true;
     });
 
+    const pagesAnswer = await inquirer.prompt([
+        {
+            type: 'checkbox',
+            name: 'pages',
+            pageSize: 10,
+            message: 'Pages:',
+            choices: [
+                {
+                    name: 'Products',
+                    checked: false,
+                },
+            ],
+        }
+    ]);
+
+    pagesAnswer.pages.forEach(page => {
+        pages[pagesOptions[page]] = true;
+    });
+
     return true;
 }
 
@@ -663,7 +690,17 @@ const createProject = async () => {
         url: '#${section}'
     },\n    `;
         }
-    })
+    });
+
+    Object.keys(pages).forEach(page => {
+        const pageName = page.charAt(0).toUpperCase() + page.slice(1);
+        if (pages[page]) {
+            extraLinks += `{
+        text: '${pageName}',
+        url: '/${page}'
+    },\n    `;
+        }   
+    });
 
     navbarLinksContent = navbarLinksContent.replace('$hometext$', languageTexts[setup.language].home);
     navbarLinksContent = navbarLinksContent.replace('$extralinks$', extraLinks);
@@ -867,6 +904,15 @@ const createProject = async () => {
         }
     })
 
+    // copy templates based on enabled pages
+    Object.keys(pages).forEach(page => {
+        const sectionName = page.charAt(0).toUpperCase() + page.slice(1);
+        if (pages[page]) {
+            const pageDir = path.join(templatesDir, sectionName);
+            fs.cpSync(pageDir, path.join(dir, 'src', 'components', 'sections', sectionName), { recursive: true });
+        }
+    })
+
     // modify src/components/common/Navbar/index.jsx  $primary$
     const navbar = path.join(dir, 'src', 'components', 'common', 'Navbar', 'index.jsx');
     let navbarContent = fs.readFileSync(navbar, 'utf8');
@@ -912,6 +958,18 @@ Scroll animations: ${setup.scrollAnimations}  `
     readmeContent = readmeContent.replace('$presets$', presetsText);
 
     fs.writeFileSync(readme, readmeContent);
+
+    // delete proucts.astro in case not enable
+
+    const productsFile = path.join(dir, 'src', 'pages', 'products.astro');
+    if (!pages.products) {
+        fs.rmSync(productsFile);
+    }
+
+    // modify products.astro
+    let productsContent = fs.readFileSync(navbar, 'utf8');
+
+    productsContent = productsContent.replace('$language$', setup.language);
     
 }
 

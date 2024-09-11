@@ -1,0 +1,23 @@
+---
+import Navbar from '../components/common/Navbar';
+import '../styles/global.css';
+import ProductsSection from '../components/sections/Products';
+---
+
+<html lang="$language$">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Products</title>
+        <meta name="description" content="Our products" />
+	</head>
+	<body>
+        <a class='anchor' id='top' href='#'></a>
+		<Navbar client:visible />
+        <main class='main'>
+            <ProductsSection />
+        </main>
+	</body>
+</html>
